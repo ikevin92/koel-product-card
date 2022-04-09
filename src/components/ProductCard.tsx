@@ -13,6 +13,7 @@ import {
 } from '../interfaces/interfaces';
 
 export const ProductContext = createContext({} as ProductContextProps);
+
 const { Provider } = ProductContext;
 
 export interface Props {
@@ -36,13 +37,18 @@ export const ProductCard = ({
   initialValues,
 }: Props) => {
   // hook personalizado
-  const { counter, increaseBy, maxCount, isMaxCountReached, reset } =
-    useProduct({
-      onChange,
-      product,
-      value,
-      initialValues,
-    });
+  const {
+    counter,
+    increaseBy,
+    maxCount,
+    isMaxCountReached,
+    reset,
+  } = useProduct({
+    onChange,
+    product,
+    value,
+    initialValues,
+  });
 
   return (
     <Provider
@@ -51,7 +57,8 @@ export const ProductCard = ({
         increaseBy,
         maxCount,
         product,
-      }}>
+      }}
+    >
       <div className={`${styles.productCard} ${className}`} style={style}>
         {children({
           count: counter,
